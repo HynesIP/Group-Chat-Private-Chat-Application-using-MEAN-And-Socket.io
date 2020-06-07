@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '../../../node_modules/@angular/forms';
 import {FormGroup,Validators,FormArray,FormControl} from '@angular/forms';
-import { ChatService } from '../chat.service';
+import { TalkService } from '../talk.service';
 @Component({
   selector: 'app-chat',
-  templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.css'],
-  providers:[ChatService]
+  templateUrl: './talk.component.html',
+  styleUrls: ['./talk.component.css'],
+  providers:[TalkService]
 })
-export class ChatComponent  {
+export class TalkComponent  {
   onlineUser:any=[]
   u:string;
   roomsForChat:any=['Angular','React','Vue']
@@ -23,7 +23,7 @@ export class ChatComponent  {
 //reactive form
   chatForm:FormGroup;
 
-  constructor(private _chatService:ChatService,private fb:FormBuilder){
+  constructor(private _chatService:TalkService,private fb:FormBuilder){
     this._chatService.newUserJoined()
     .subscribe(data=> this.messageArray.push(data));
 

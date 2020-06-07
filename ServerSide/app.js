@@ -6,18 +6,19 @@ var morgan = require("morgan");
 var cors = require("cors");
 var bodyParser = require('body-parser');
 var userRoute = require("./routes/userauth.route")
-var chat = require("./routes/chat");
+var chat = require("./routes/talk");
 
 var app = express();
 //connecting to mongodb 
 //database connection setup
 const mongoose = require("mongoose");
+var mlab = "ds161262.mlab.com:61262/happyplacemc-sb-00";
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost:27017/ChatApplication", { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('Connected to MongoDB!!'))
+mongoose.connect("mongodb://groot:hip12899@"+mlab, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('Connected to '+mlab))
   .catch((err) => console.log(err));
 
-//middlewares used
+//Middlewares active
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -27,8 +28,6 @@ app.use(express.static(__dirname + '/public'));
 var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
 //set up the logger
 app.use(morgan('combined', { stream: accessLogStream }))
-
-
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
@@ -48,7 +47,7 @@ app.use("/", chat);
 app.use("/api", userRoute);
 
 server.listen(port, function (req, res) {
-  console.log("You are listening to port 3000");
+  console.log("Listening to port 3000");
 });
 
 module.exports = app

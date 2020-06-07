@@ -6,8 +6,6 @@ var jwt_decode = require('jwt-decode');
 var router = express.Router();
 var User = require("../models/userauth.model");
 
-
-
 router.get('/protectedRoute',verifyToken,function(req,res){
     var decoded = jwt_decode(req.token);
     console.log(decoded);
@@ -25,7 +23,8 @@ router.get('/protectedRoute',verifyToken,function(req,res){
           });
     });
 });
-//route for User signup
+
+//Route for Builder signup
 router.post('/signup',function(req,res){
     console.log("Inside route")
     var _id= new  mongoose.Types.ObjectId();
@@ -50,8 +49,8 @@ router.post('/signup',function(req,res){
             res.status(400).json(err);
         }
         else{
-            console.log("User created");
-            res.json({"msg":"User created successfully"});
+            console.log("Builder created");
+            res.json({"msg":"Builder created successfully"});
         }
     })
 })
@@ -98,9 +97,9 @@ router.post("/signin",function(req,res){
     .catch((err) => console.log(err));
 })
 
-//format of token
+//Token Format
 //Authorization:Bearer<access_token>
-//verify token
+//Verify Token
 //It is a middleware function therfore it calls the next to proceed
 function verifyToken(req,res,next)
 {

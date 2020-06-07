@@ -13,7 +13,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatToolbarModule} from '@angular/material';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AppComponent } from './app.component';
-import { ChatComponent } from './chat/chat.component';
+import { TalkComponent } from './talk/talk.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
@@ -26,7 +26,7 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-    ChatComponent,
+    TalkComponent,
     LoginComponent,
     SignupComponent,
     PrivatechatComponent

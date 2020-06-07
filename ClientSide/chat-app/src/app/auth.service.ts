@@ -14,7 +14,11 @@ export class AuthService {
     .pipe(
       map(result => {
         localStorage.setItem('access_token', result.token);
-        console.log('access_token');
+        console.group("Login response.");
+          console.log('access_token');
+          console.log(result);
+        console.groupEnd();
+
          return result;
       })
     );
@@ -22,7 +26,13 @@ export class AuthService {
   
   //signup for the signup component 
   signup(name:string,nickName:string,mobNumber:number,email: string, password: string): Observable<boolean> {
-    console.log("service")
+    console.group("Login input.");
+      console.log(name);
+      console.log(nickName);
+      console.log(mobNumber);
+      console.log(email);
+    console.groupEnd();
+    localStorage.setItem("email",email);
     return this.http.post('http://localhost:3000/api/signup', {name:name,nickName:nickName,mobNumber:mobNumber,email:email, password: password})
       .pipe(
         map(result => {

@@ -27,16 +27,17 @@ export class LoginComponent {
   }
 
   navigateToChat() {
-    this.router.navigateByUrl('/chat', { state: this.loginForm.value });
+    this.router.navigateByUrl('/talk', { state: this.loginForm.value });
     console.log(this.loginForm.value);
   }
 
   public submit() {
+    localStorage.setItem("email",this.loginForm.get("email").value);
     this.auth.login(this.loginForm.get("email").value, this.loginForm.get('password').value)
       .pipe(first())
       .subscribe(
         result =>{ 
-        this.router.navigateByUrl('/chat')
+        this.router.navigateByUrl('/talk')
         
         },
         error=>{

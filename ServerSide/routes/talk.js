@@ -5,26 +5,26 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var cors=require("cors");
 server.listen(4000,function(req,res){
-
-    console.log("You are listening to port 4000");
- });
+    console.log("Listening on port 4000");
+});
 
 io.origins('*:*');
 var users=0;
 
 io.on('connection',function(socket){
-    console.log("User connected");
+    console.log("Builder connected");
 
     socket.on('disconnect',function(socket){
-        console.log("user disconnected")
+        console.log("Builder disconnected")
     })
+
     //join room
     socket.on('join',function(data){
  
-        //display the number of users in room 
+        //Display the number of Builders in room 
         users+=1
-        console.log(users)
-        io.sockets.emit('usercount',{count:users +' person joined '});
+        console.log(Builder)
+        io.sockets.emit('Builder count',{count:users +' players joined '});
         //end
 
         // user joining the particular room
@@ -33,12 +33,12 @@ io.on('connection',function(socket){
         console.log(data.user + 'joined the room:' +data.room)
 
        //inform other on the room about event
-       socket.broadcast.to(data.room).emit('new user joined',{user:data.user,message:"has joined this room "});
+       socket.broadcast.to(data.room).emit('New builder joined',{user:data.user,message:"has joined this room "});
       
 
     });
-    //leave room
 
+    //leave room
     socket.on('leave',function(data){
         //number of users in room
         users--
@@ -47,7 +47,7 @@ io.on('connection',function(socket){
         //end
 
         console.log(data.user + "has left the room " +data.room)
-        socket.broadcast.to(data.room).emit('left room',{user:data.user,message:"has left the room "});
+        socket.broadcast.to(data.room).emit('Left room',{user:data.user,message:"has left the room "});
         socket.leave(data.room)
         
     })
