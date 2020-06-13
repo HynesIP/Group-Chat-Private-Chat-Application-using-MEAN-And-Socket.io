@@ -4,8 +4,8 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var cors=require("cors");
-server.listen(4000,function(req,res){
-    console.log("Listening on port 4000");
+server.listen(8083,function(req,res){
+    console.log("Listening on port 8083");
 });
 
 io.origins('*:*');
@@ -23,17 +23,17 @@ io.on('connection',function(socket){
  
         //Display the number of Builders in room 
         users+=1
-        console.log(Builder)
+        console.log(users)
         io.sockets.emit('Builder count',{count:users +' players joined '});
         //end
 
         // user joining the particular room
         socket.join(data.room)
       
-        console.log(data.user + 'joined the room:' +data.room)
+        console.log(data.user + ' joined the room:' +data.room)
 
        //inform other on the room about event
-       socket.broadcast.to(data.room).emit('New builder joined',{user:data.user,message:"has joined this room "});
+       socket.broadcast.to(data.room).emit('New builder joined',{user:data.user,message:" has joined this room "});
       
 
     });

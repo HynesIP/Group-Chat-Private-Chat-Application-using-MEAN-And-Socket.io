@@ -4,7 +4,7 @@ import {Observable,Observer} from 'rxjs';
 @Injectable()
 export class TalkService{
 
-    private socket = io.connect('http://localhost:4000');
+    private socket = io.connect('http://localhost:8083');
 
     joinRoom(data){
         this.socket.emit('join',data);
