@@ -21,3 +21,4 @@
 ::1 - - [07/Jun/2020:20:06:01 +0000] "POST /api/signin HTTP/1.1" 200 191 "http://localhost:8081/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36"
 ::1 - - [07/Jun/2020:20:16:11 +0000] "POST /api/signin HTTP/1.1" 200 191 "http://localhost:8081/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36"
 ::ffff:107.22.195.49 - - [09/Jun/2020:23:04:07 +0000] "GET / HTTP/1.1" 404 139 "-" "Cloud mapping experiment. Contact research@pdrlabs.net"
+::1 - - [13/Jun/2020:19:03:20 +0000] "POST /api/signin HTTP/1.1" 200 191 "http://localhost:8081/talk" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36"
